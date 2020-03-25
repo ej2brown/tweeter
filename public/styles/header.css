@@ -1,0 +1,27 @@
+header {
+  height: 400px;
+  width: 100vw; 
+  text-align: center;
+  background-color: #cc9900;
+  color: #FFFFFF;
+  margin-top: 120px;
+}
+
+.avatar {
+  position: relative;
+  margin-top: 50vw;
+  margin-left: 50vw;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
