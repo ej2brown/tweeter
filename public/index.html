@@ -23,7 +23,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- App JS -->
-  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/client.js" defer></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
 </head>
@@ -47,9 +47,9 @@
     </div>
   </header>
   <!-- Page-specific (main) content here -->
-  <main class="container"></main>
+  <main class="container">
   <section class="new-tweet">
-    <form action="/tweets" method="post">
+    <form action="/tweets" method="post" class="new-tweet-form">
       <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
       <button class="button">Tweet</button>
       <output name="counter" class="counter" for="tweet-text">140</output>
@@ -57,12 +57,8 @@
   </section>
     <!-- tweet-container -->
   <section id="tweet-container">
-    <article>
-    <h2><span>&#128540</span> Your Name <span class="handle">@yourname</span></h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <footer>10 days ago<span class="tweet-icons"> <span>&#9873</span><span>&#128257</span><span>&#9829</span></span></footer>
-   </article>
     </section>
+  </main>
 </body>
 
 </html>
