@@ -2,6 +2,7 @@
   margin: 10px;
   padding: 10px;
   text-align: centered;
+  margin-bottom: 50px;
 }
 
 
@@ -11,9 +12,7 @@
   border-bottom: 3px solid black;
   font-style: italic;
   padding: 5px;
-  margin-right: 40px;
-  width: 100vw;
-  margin: 20px;
+  width: 100%;
 }
 
 .new-tweet .counter {
@@ -24,13 +23,10 @@
 }
 
 .new-tweet button {
-  
   background-color: blue;
   color: white;
   float:left;
 }
-
-
 
 .error {
   color: red;
