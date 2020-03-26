@@ -23,7 +23,7 @@ $(() => {
   const createTweetElement = function (tweet) {
     let renderedTweet = `
     <article class="tweet">
-      ${JSON.stringify(tweet)} 
+      ${escape(JSON.stringify(tweet))} 
     </article>
   `
     return renderedTweet
@@ -48,7 +48,7 @@ $(() => {
     $.ajax({
       url: '/tweets/',
       type: 'GET',
-      data: 'json',
+      dataType: 'json',
       success: response => {
         renderTweets(response);
       }
@@ -73,6 +73,9 @@ $(() => {
         }
       })
     }
+    .catch(err) {
+      document.getElementById("demo").innerHTML = err.message;
+    }
     
     if ($('#tweet-text').val().length === 0) {
       alert('Error: No content');
@@ -82,5 +85,11 @@ $(() => {
     }
     console.log('==========', event);
   });
+
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
 });
