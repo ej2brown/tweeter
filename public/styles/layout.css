@@ -42,16 +42,20 @@ main {
     justify-content: space-between;
 
   }
-  
-  main {
+  body {
     margin-top: 120px;
-    width: 50%;
-
   }
 
+  main {
+    width: 50vw;
+    margin-top: 120px;
+    align-content: center;
+  }
+  
   header {
-    margin: 10%;
-    width: 50%;
+    margin: 10vw 10vw 10vw 5vw;
+    width: 30vw;
+    padding: 10px;
   }
 
   .new-tweet-container {

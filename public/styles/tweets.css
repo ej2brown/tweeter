@@ -1,12 +1,12 @@
-#tweet-container {
+#tweet-container article.tweet {
   border-style: solid;
-  border-color: black; 
+  border-color: black;
   padding: 15px;
   margin: 10px 10px 10px 10px;
 }
 
 #tweet-container h2 {
-padding-left: 5px;
+  padding-left: 5px;
 }
 
 #tweet-container .tweet-icons {
@@ -14,20 +14,17 @@ padding-left: 5px;
   font-size: 25px;
   float: right;
   padding-right: 10px;
-
 }
 
-#tweet-container:hover {
-box-shadow: 5px, 10px black;
-text-shadow: 2px 2px black;
+#tweet-container article:hover  {
+  box-shadow: 5px, 10px black;
+  text-shadow: 2px 2px black;
 }
-
 
 #tweet-container article:hover .handle {
   display: inline;
 }
 
-
 #tweet-container article:hover .handle {
-  display:none;
+  display: none;
 }

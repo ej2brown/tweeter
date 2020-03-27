@@ -14,7 +14,6 @@ $(() => {
       dataType: 'JSON'
     })
       .then(response => {
-        console.log('=====RESPONSE======',response);
         formatRenderTweets(response);
       })
       .catch(() => {
@@ -32,9 +31,8 @@ $(() => {
   const formatRenderTweets = function (tweets) {
     const markupArray = [];
     // loops through tweets
-    console.log('=====TWEETS=====', tweets)
     for (const tweet of tweets) {
-      
+      console.log(tweet);
       // calls createTweetElement for each tweet
       markupArray.push(createTweetElement(tweet));
     }
@@ -45,14 +43,15 @@ $(() => {
   }
   
   
-  const createTweetElement = function (JSNObjTweet) {
-    const { name, avatar, handle } = JSNObjTweet.user;
-    const { text } = JSNObjTweet.content;
-    const { created_at } = JSNObjTweet;
-
+  const createTweetElement = function (objTweet) {
+    const { name, avatars, handle } = objTweet.user;
+    const { text } = objTweet.content;
+    let { created_at } = objTweet;
+    created_at = new Date(created_at).toString().slice(0,25)
+console.log(avatars)
     let renderedTweet = `
     <article class="tweet">
-    <h1><img src="${avatar}"> ${name} ${handle}</h1>
+    <h3><img src="${avatars}"> ${name} <span class="handle">${handle}</span></h3>
     <p>${text}</p>
     <p>${created_at}</p>
     </article>
@@ -93,7 +92,6 @@ $(() => {
     if ($('#tweet-text').val().length > 140) {
       $(".error").text('Error: Too long (more than 140)');
     }
-    console.log('==========', event);
   });
 
   const escape = function (str) {
@@ -101,13 +99,10 @@ $(() => {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
-
+$("#hiddem").hide();
   $("#toggle").click(function () {
     $(".new-tweet-container").slideToggle("slow", function () {
     });
   });
 
 });
-
-//toggle
-//$(selector).scrollTop(position)
