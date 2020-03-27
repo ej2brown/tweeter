@@ -36,6 +36,7 @@ $(() => {
       // calls createTweetElement for each tweet
       markupArray.push(createTweetElement(tweet));
     }
+    
     // takes return value and appends it to the tweets container
     $('#tweets-container').empty();
     $('#tweet-container').append(markupArray.reverse().join(''));
@@ -48,12 +49,11 @@ $(() => {
     const { text } = objTweet.content;
     let { created_at } = objTweet;
     created_at = new Date(created_at).toString().slice(0,25)
-console.log(avatars)
     let renderedTweet = `
     <article class="tweet">
     <h3><img src="${avatars}"> ${name} <span class="handle">${handle}</span></h3>
     <p>${text}</p>
-    <p>${created_at}</p>
+    <footer><span>${created_at}</span><span class="tweet-icons"> <span>&#9873</span><span>&#128257</span><span>&#9829</span></span></footer>
     </article>
     `
     // ${escape(JSON.stringify(tweet))} 
@@ -62,20 +62,22 @@ console.log(avatars)
   }
 
 
-  //POST the text data to '/tweets/ route
   $('.new-tweet-form').submit(function (event) {
     event.preventDefault();
     $('.error').hide();
     if ($('#tweet-text').val().length !== 0 && $('#tweet-text').val().length <= 140) {
+     console.log('went through')
       $.ajax({
         url: '/tweets/',
         type: 'POST',
         data: $(this).serialize(),
       })
         .then(() => {
+          console.log('went through .then')
           loadTweets();
         })
         .catch(() => {
+          console.log('went through .catch')
           const errorMessage =
             `<div class="error">
             <h1>Whoops, something went wrong!</h1>
@@ -86,11 +88,15 @@ console.log(avatars)
 
 
     if ($('#tweet-text').val().length === 0) {
-      $(".error").text("No content");
+      console.log('went through ===0')
+
+      $(".error").show().text("Nothing to say? You gotta type in something!");
     }
 
     if ($('#tweet-text').val().length > 140) {
-      $(".error").text('Error: Too long (more than 140)');
+      console.log('went through length >140')
+
+      $(".error").show().text("Woah, slow down there! Include only 140 characters ");
     }
   });
 

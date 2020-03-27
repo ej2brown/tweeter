@@ -25,9 +25,10 @@ nav {
   }
 }
 
-.toggle {
+#toggle {
   float: right;
   color: red;
+  
 }
 
 #hidden {

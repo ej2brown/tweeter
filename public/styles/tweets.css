@@ -16,7 +16,7 @@
   padding-right: 10px;
 }
 
-#tweet-container article:hover  {
+#tweet-container article:hover {
   box-shadow: 5px, 10px black;
   text-shadow: 2px 2px black;
 }
@@ -27,4 +27,8 @@
 
 #tweet-container article:hover .handle {
   display: none;
+}
+
+#tweet-container .handle {
+  float: right;
 }
