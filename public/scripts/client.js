@@ -42,6 +42,12 @@ $(() => {
     $('#tweet-container').append(markupArray.reverse().join(''));
   };
 
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   // fetches tweet object and renders it
   const createTweetElement = function(objTweet) {
     const {name, avatars, handle} = objTweet.user;
@@ -52,7 +58,7 @@ $(() => {
     <article class="tweet">
     <h3><img src="${avatars}"> ${name} 
     <span class="handle">${handle}</span></h3>
-    <p>${text}</p>
+    <p>${escape(text)}</p>
     <footer><span>${created_at}</span><span class="tweet-icons">
     <span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
     </footer>
@@ -70,7 +76,7 @@ $(() => {
         $.ajax({
           url: '/tweets/',
           type: 'POST',
-          data: $().serialize(),
+          data: $(this).serialize(),
         })
             .then(() => {
               console.log('went through .then');
@@ -78,11 +84,7 @@ $(() => {
             })
             .catch(() => {
               console.log('went through .catch');
-              const errorMessage =
-            `<div class="error">
-            <h1>Whoops, something went wrong!</h1>
-            </div> `;
-              $('#tweet-container').append(errorMessage);
+              $('#error').show().text('Whoops, something went wrong!');
             });
       }
     }
@@ -101,11 +103,6 @@ $(() => {
     }
   });
 
-  const escape = function(str) {
-    const div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
   $('#hidden').hide();
   $('#toggle').click(function() {
     $('.new-tweet-container').slideToggle('slow', function() {
