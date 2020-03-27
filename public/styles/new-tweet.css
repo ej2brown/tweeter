@@ -1,4 +1,5 @@
-.new-tweet {
+
+.new-tweet-container {
   margin: 10px;
   padding: 10px;
   text-align: centered;
@@ -6,7 +7,7 @@
 }
 
 
-.new-tweet textarea {
+.new-tweet-container textarea {
   background-color: #f4f1ec;
   border-style: hidden;
   border-bottom: 3px solid black;
@@ -15,17 +16,16 @@
   width: 100%;
 }
 
-.new-tweet .counter {
+.new-tweet-container .counter {
   float: right;
   margin-right: 5px;
   font-style: italic;
   
 }
 
-.new-tweet button {
+.new-tweet-container button {
   background-color: blue;
   color: white;
-  float:left;
 }
 
 .error {

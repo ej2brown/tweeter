@@ -4,6 +4,7 @@
 <head>
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- External CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -28,13 +29,16 @@
 
 </head>
 
-<body>
+<body class="container">
   <!-- Top nav bar (fixed) -->
   <nav>
     <div style="font-family: 'Bungee', serif;">
       <span class="left">tweeter</span>
       <span class="right">Write a new tweet</span>
-      <span class="clear"></span>
+      <!-- toggle button -->
+    </div>
+    <br>
+    <div id="toggle" class="right">Compose</div>
   </nav>
 
   <header>
@@ -47,17 +51,17 @@
     </div>
   </header>
   <!-- Page-specific (main) content here -->
-  <main class="container">
-  <section class="new-tweet">
-    <form action="/tweets" method="post" class="new-tweet-form">
-      <div class="error">Error</div>
-      <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-      <button class="button">Tweet</button>
-      <output name="counter" class="counter" for="tweet-text">140</output>
-    </form>
-  </section>
+  <main>
+    <section class="new-tweet-container wrap">
+      <form action="/tweets" method="post" class="new-tweet-form">
+        <div class="error"></div>
+        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <button class="button left">Tweet</button>
+        <output name="counter" class="counter" for="tweet-text">140</output>
+      </form>
+    </section>
     <!-- tweet-container -->
-  <section id="tweet-container">
+    <section id="tweet-container">
     </section>
   </main>
 </body>

@@ -1,4 +1,4 @@
-nav {
+/* nav {
   font-family: "Bungee", cursive;
   position: absolute;
   top: 0px;
@@ -8,6 +8,52 @@ nav {
   background-color: #4056a1;
   color: #FFFFFF;
   padding: 1.5em;
+} */
+
+
+/* Tablet Styles */
+/* @media only screen and (min-width: 768px) { */
+  nav {
+    font-family: "Bungee", cursive;
+    position: absolute;
+    top: 0px;
+    height: 120px;
+    width: 100vw;
+    z-index: 4;
+    background-color: #cc9900;
+    color: #ffffff;
+    padding: 1.5em;
+  }
+/* } */
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  nav {
+    font-family: "Bungee", cursive;
+    position: absolute;
+    top: 0px;
+    height: 120px;
+    width: 100vw;
+    z-index: 4;
+    background-color: #4056a1;
+    color: #ffffff;
+    padding: 1.5em;
+  }
 }
 
+.toggle {
+  float: right;
+  }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
 
