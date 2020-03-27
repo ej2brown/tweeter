@@ -14,14 +14,3 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
-
-
-/* Tablet styles */
-@media only screen and (min-width: 768px) {
-
-}
-
-/* Desktop styles */
-@media only screen and (min-width: 1024px) {
-
-}

@@ -35,9 +35,9 @@
     <div style="font-family: 'Bungee', serif;">
       <span class="left">tweeter</span>
       <span class="right">Write a new tweet</span>
-      <!-- toggle button -->
     </div>
     <br>
+    <!-- toggle button -->
     <div id="toggle" class="right">&#8744</div>
   </nav>
 
@@ -52,6 +52,7 @@
   </header>
   <!-- Page-specific (main) content here -->
   <main>
+    <!-- a form of users to subit new tweets -->
     <section id="hidden" class="new-tweet-container wrap">
       <form action="/tweets" method="post" class="new-tweet-form">
         <div id="error"></div>
@@ -60,7 +61,7 @@
         <output name="counter" class="counter" for="tweet-text">140</output>
       </form>
     </section>
-    <!-- tweet-container -->
+    <!-- list of tweets-->
     <section id="tweet-container">
     </section>
   </main>
