@@ -42,8 +42,8 @@ $(() => {
     $('#tweet-container').append(markupArray.reverse().join(''));
   };
 
-  const escape =  function(str) {
-    let div = document.createElement('div');
+  const escape = function(str) {
+    const div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
@@ -53,14 +53,16 @@ $(() => {
     const {name, avatars, handle} = objTweet.user;
     const {text} = objTweet.content;
     let {created_at} = objTweet;
-    created_at = new Date(created_at).toString().slice(0, 25);
+    const createdDay = new Date(created_at).toString().slice(3, 15);
+    const createdTime = new Date(created_at).toString().slice(16, 25);
+
     const renderedTweet = `
     <article class="tweet">
     <h3><img src="${avatars}"> ${name} 
     <span class="handle">${handle}</span></h3>
     <p>${escape(text)}</p>
-    <footer><span>${created_at}</span><span class="tweet-icons">
-    <span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
+    <footer><span>${createdDay} at ${createdTime}</span>
+    <span class="tweet-icons"><span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
     </footer>
     </article>
     `;
