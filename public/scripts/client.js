@@ -6,7 +6,7 @@
 
 
 $(() => {
-// takes places rendered tweets  the page by calling itself right after
+  // takes places rendered tweets the page by calling itself right after
   const loadTweets = () => {
     $.ajax({
       url: '/tweets/',
@@ -17,11 +17,7 @@ $(() => {
           formatRenderTweets(response);
         })
         .catch(() => {
-          const errorMessage =
-          `<div class="error">
-          <h1>Whoops, something went wrong!</h1>
-          </div> `;
-          $('#tweet-container').append(errorMessage);
+          $('#error').show().text('Whoops, something went wrong!');
         });
   };
 
@@ -39,7 +35,7 @@ $(() => {
 
     // appends value to the tweets container reverse chronological order
     $('#tweets-container').empty();
-    $('#tweet-container').append(markupArray.reverse().join(''));
+    $('#tweet-container').html(markupArray.reverse().join(''));
   };
 
   const escape = function(str) {
@@ -52,56 +48,54 @@ $(() => {
   const createTweetElement = function(objTweet) {
     const {name, avatars, handle} = objTweet.user;
     const {text} = objTweet.content;
-    let {created_at} = objTweet;
+    const {created_at} = objTweet;
     const createdDay = new Date(created_at).toString().slice(3, 15);
     const createdTime = new Date(created_at).toString().slice(16, 25);
 
     const renderedTweet = `
     <article class="tweet">
-    <h3><img src="${avatars}"> ${name} 
-    <span class="handle">${handle}</span></h3>
-    <p>${escape(text)}</p>
-    <footer><span>${createdDay} at ${createdTime}</span>
-    <span class="tweet-icons"><span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
-    </footer>
+      <h3><img src="${avatars}"> ${name} 
+        <span class="handle">${handle}</span></h3>
+      <p>${escape(text)}</p>
+      <footer><span>${createdDay} at ${createdTime}</span>
+        <span class="tweet-icons">
+        <span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
+      </footer>
     </article>
     `;
     return renderedTweet;
   };
 
+  const tweetIsValid = () => {
+    const charCount = $('#tweet-text').val().length;
+    if (charCount === 0) {
+      $('#error').show().text('Nothing to say? You gotta type in something!');
+      return false;
+    }
+    if (charCount > 140) {
+      $('#error').show().text('Woah, slow down! Only include 140 characters.');
+      return false;
+    }
+    return true;
+  };
 
   $('.new-tweet-form').submit(function(event) {
     event.preventDefault();
-    $('.error').hide();
-    if ($('#tweet-text').val().length !== 0) {
-      if ($('#tweet-text').val().length <= 140) {
-        $.ajax({
-          url: '/tweets/',
-          type: 'POST',
-          data: $(this).serialize(),
-        })
-            .then(() => {
-              console.log('went through .then');
+    $('#error').hide();
+    if (tweetIsValid()) {
+      $.ajax({
+        url: '/tweets/',
+        type: 'POST',
+        data: $(this).serialize(),
+      })
+          .then(() => {
+            $('.new-tweet-container').slideToggle('slow', function() {
               loadTweets();
-            })
-            .catch(() => {
-              console.log('went through .catch');
-              $('#error').show().text('Whoops, something went wrong!');
             });
-      }
-    }
-
-
-    if ($('#tweet-text').val().length === 0) {
-      console.log('went through ===0');
-
-      $('#error').show().text('Nothing to say? You gotta type in something!');
-    }
-
-    if ($('#tweet-text').val().length > 140) {
-      console.log('went through length >140');
-
-      $('#error').show().text('Woah, slow down! Include only 140 characters.');
+          })
+          .catch(() => {
+            $('#error').show().text('Whoops, something went wrong!');
+          });
     }
   });
 
