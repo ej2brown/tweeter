@@ -34,6 +34,17 @@ main {
   background-color: #f4f1ec;
 }
 
+@media only screen and (max-width: 360px) {
+
+  main { 
+    font-size: 1em;
+  }
+
+  #tweet-container article.tweet {
+    padding-bottom: 40px;
+  }
+}
+
 
 @media only screen and (min-width: 1024px) {
   .container {
@@ -65,5 +76,9 @@ main {
 
   #tweet-container {
     width: 95%;
+  }
+
+  section {
+    width: 100%;
   }
 }

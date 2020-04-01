@@ -1,3 +1,4 @@
+
 #tweet-container article.tweet {
   border-style: solid;
   border-color: black;
@@ -31,4 +32,8 @@
 
 #tweet-container .handle {
   float: right;
+}
+
+p {
+  overflow-wrap: break-word;
 }
