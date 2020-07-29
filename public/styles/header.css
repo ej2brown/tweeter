@@ -1,16 +1,57 @@
-header {
-  position: relative;
-  height: 25%;
-  text-align: center;
-  background-color: #cc9900;
-  color: #ffffff;
-  margin-top: 120px;
+nav {
+    font-family: "Bungee", cursive;
+    top: 0px;
+    height: 120px;
+    width: 100%;
+    z-index: 4;
+    background-color: #cc9900;
+    color: #ffffff;
+    padding: 1.5em;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
 }
 
-.avatar {
-  position: relative;
-  margin-top: 50vw;
-  margin-left: 50vw;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+@media only screen and (max-width: 360px) {
+    nav {
+        font-size: .5em;
+    }
 }
 
+
+/* Desktop styles */
+
+@media only screen and (min-width: 769px) {
+    nav {
+        background-color: #4056a1;
+        font-size: 1.5em;
+    }
+}
+
+#toggle {
+    float: right;
+    color: blue;
+    margin-top: -50px;
+}
+
+.clear {
+    clear: both;
+}
+
+.bounce {
+    -moz-animation: bounce 1.5s infinite;
+    -webkit-animation: bounce 1.5s infinite;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
