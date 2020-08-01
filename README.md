@@ -16,7 +16,7 @@ This repository is the starter code for the project: Students will fork and clon
 - Express
 - Node 5.10.x or above
 
-Images With Responsive Design
+## Images With Responsive Design
 !["Large Screen"](docs/large-screen.png)
 !["Medium Screen"](docs/medium-screen.png)
 !["Small Screen"](docs/small-screen.png)
