@@ -3,92 +3,51 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-    
+
     html {
         box-sizing: border-box;
     }
-    
-    *,
-    *:before,
-    *:after {
+
+    *, *:before, *:after {
         box-sizing: inherit;
     }
+
     /*
  * Global layout stuff
  */
-    
+
     body {
         color: #545149;
         background-color: #f4f1ec;
-        font-size: 1.5em;
+        font-size: 1em;
         font-family: "Source Sans Pro", sans-serif;
+        width: 100vw;
     }
+
     /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-    
-    .container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        margin-top: 120px;
-    }
-    
-    .profile {
-        background-color: #cc9900;
-        color: #ffffff;
-        padding: 4vw;
 
-    }
-    
-    .container>section {
-        justify-content: flex-end;
-    }
-    /* to center img and name */
-    
-    .profile>* {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-    
-    #hidden {
-        display: none;
-    }
-    /* smaller screens */
-    
-    @media only screen and (max-width: 360px) {
+    @media only screen and (min-width: 1024px) {
         main {
-            font-size: 1em;
+            margin-top: 30px;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            justify-content: space-evenly;
+            /* background-color: #ffffff; */
         }
-        #tweet-container article.tweet {
-            padding-bottom: 40px;
+        header {
+            width: 30vw;
         }
-        .container {
-            margin-top: 0px;
-        }
-    }
-    
-    @media only screen and (max-width: 769px) {
-        .container {
-            margin: 0px;
+        header>section {
+            flex: 2;
         }
         .profile {
-            width: 100%;
-            padding: 0vw;
-
+            margin-top: 30px;
         }
     }
-    /* larger screens */
-    
-    @media only screen and (min-width: 1024px) {
-        /* .profile {
-            margin: 0vw 10vw 0vw 0vw;
-            padding: 4vw;
-        } */
-        /* .new-tweet-container {
-        padding-top: 12rem;
-        padding-right: 3.75rem;
-    } */
+
+    .hidden {
+        display: none;
     }
