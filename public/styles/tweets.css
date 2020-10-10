@@ -1,4 +1,3 @@
-
 #tweet-container article.tweet {
   border-style: solid;
   border-color: black;
@@ -18,15 +17,15 @@
 }
 
 #tweet-container article:hover {
-  box-shadow: 5px, 10px black;
-  text-shadow: 2px 2px black;
+  box-shadow: 1px 1px;
+  text-shadow: 1px 1px;
 }
 
 #tweet-container article:hover .handle {
   display: inline;
 }
 
-#tweet-container article:hover .handle {
+#tweet-container article .handle {
   display: none;
 }
 
