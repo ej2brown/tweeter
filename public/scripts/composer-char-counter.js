@@ -1,18 +1,12 @@
 $(document).ready(function() {
-  // console.log('ready!');
-
   $('#tweet-text').on('input', function() {
-    let remaining = Number($('.counter').text());
-    const charCount = this.value.length;
-
-    remaining = 140 - charCount;
-    $('.counter').text(remaining);
-
-    if (remaining < 0) {
-      $(' .counter').addClass('error');
+    const charCount = $(this).val().length;
+    const counter = $('.counter');
+    $('.counter').text(140 - charCount);
+    if (charCount > 140) {
+      counter.css('color', 'red');
     } else {
-      $(' .counter').removeClass('error');
+      counter.css('color', '#545149');
     }
   });
 });
-
