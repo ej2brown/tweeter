@@ -3,8 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-
 $(() => {
   // takes places rendered tweets the page by calling itself right after
   const loadTweets = () => {
@@ -23,7 +21,6 @@ $(() => {
 
   loadTweets();
 
-
   // appends an formated array into the tweet container
   const formatRenderTweets = function(tweets) {
     const markupArray = [];
@@ -32,7 +29,6 @@ $(() => {
       // calls createTweetElement for each tweet
       markupArray.push(createTweetElement(tweet));
     }
-
     // appends value to the tweets container reverse chronological order
     $('#tweets-container').empty();
     $('#tweet-container').html(markupArray.reverse().join(''));
@@ -49,17 +45,21 @@ $(() => {
     const {name, avatars, handle} = objTweet.user;
     const {text} = objTweet.content;
     const {created_at} = objTweet;
-    const createdDay = new Date(created_at).toString().slice(3, 15);
-    const createdTime = new Date(created_at).toString().slice(16, 25);
 
     const renderedTweet = `
     <article class="tweet">
-      <h3><img src="${avatars}"> ${name} 
-        <span class="handle">${handle}</span></h3>
+      <h3>
+        <img src="${avatars}"> 
+        ${name} 
+        <span class="handle">${handle}</span>
+      </h3>
       <p>${escape(text)}</p>
-      <footer><span>${createdDay} at ${createdTime}</span>
+      <footer>
+        <span>${moment(created_at).fromNow()}</span>
         <span class="tweet-icons">
-        <span>&#9873</span><span>&#128257</span><span>&#9829</span></span>
+          <i class="far fa-flag"></i>
+          <i class="fas fa-retweet"></i>
+          <i class="far fa-thumbs-up"></i>
       </footer>
     </article>
     `;
@@ -69,11 +69,17 @@ $(() => {
   const tweetIsValid = () => {
     const charCount = $('#tweet-text').val().length;
     if (charCount === 0) {
-      $('#error').show().text('Nothing to say? You gotta type in something!');
+      $('#error').slideDown('slow', function() {
+        $('#error').show().text('Nothing to say? You gotta type in something!');
+        $('#error').prepend('<i class="fa fa-exclamation-triangle"></i>');
+      });
       return false;
     }
     if (charCount > 140) {
-      $('#error').show().text('Woah, slow down! Only include 140 characters.');
+      $('#error').slideDown('slow', function() {
+        $('#error').show().text('Woah, slow down! Only include 140 characters.');
+        $('#error').prepend('<i class="fa fa-exclamation-triangle"></i>');
+      });
       return false;
     }
     return true;
@@ -86,7 +92,7 @@ $(() => {
       $.ajax({
         url: '/tweets/',
         type: 'POST',
-        data: $(this).serialize(),
+        data: $(this).serialize(), // this = event.target
       })
           .then(() => {
             $('.new-tweet-container').slideToggle('slow', function() {

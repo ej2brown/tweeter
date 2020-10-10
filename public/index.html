@@ -5,20 +5,23 @@
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,700i&display=swap&subset=vietnamese" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,700i&display=swap&subset=vietnamese"
+        rel="stylesheet">
+    <!-- font awesome icons -->
+    <script src="https://kit.fontawesome.com/fa7d5bdb24.js" crossorigin="anonymous"></script>
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js" defer></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -26,36 +29,35 @@
 
 <body>
     <!-- Top nav bar (fixed) -->
-    <header>
-        <nav>
-            <span>tweeter</span>
-            <span>Write a new tweet</span>
-        </nav>
+    <nav>
+        <span>tweeter</span>
         <!-- toggle button -->
-        <button id="toggle" class="bounce">&#8744</button>
-    </header>
-
+        <div id="toggle" class="nav-right">
+            <span>Write a new tweet</span>
+            <i class="fas fa-chevron-down bounce"></i>
+        </div>
+    </nav>
     <!-- Page-specific (main) content here -->
     <main class="container">
-
-        <div class="profile">
-            <img class="logo" src="/images/profile-hex.png">
-            <h2>Elizabeth Brown</h2>
-        </div>
-
+        <header>
+            <div class="profile">
+                <img class="profile-pic" src="/images/profile-hex.png">
+                <h2>Elizabeth Brown</h2>
+            </div>
+        </header>
         <!-- a form of users to subit new tweets -->
-        <section id="hidden" class="new-tweet-container wrap">
-            <form action="/tweets" method="post" class="new-tweet-form">
-                <div id="error"></div>
-                <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-                <button class="button left">Tweet</button>
-                <output name="counter" class="counter" for="tweet-text">140</output>
-            </form>
-        </section>
-
-        <!-- list of tweets-->
-        <section id="tweet-container">
-        </section>
+        <div class="responsive">
+            <section class="new-tweet-container wrap hidden">
+                <form action="/tweets" method="post" class="new-tweet-form">
+                    <div  id="error"></div>
+                    <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+                    <button class="button left">Tweet</button>
+                    <output name="counter" class="counter" for="tweet-text">140</output>
+                </form>
+            </section>
+            <!-- list of tweets-->
+            <section id="tweet-container"></section>
+        </div>
     </main>
 </body>
 
