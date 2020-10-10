@@ -1,57 +1,17 @@
-nav {
-    font-family: "Bungee", cursive;
-    top: 0px;
-    height: 120px;
-    width: 100%;
-    z-index: 4;
-    background-color: #cc9900;
-    color: #ffffff;
-    padding: 1.5em;
-    font-size: 1em;
+
+
+header {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #d2a501;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5em;
 }
 
-@media only screen and (max-width: 360px) {
-    nav {
-        font-size: .5em;
-    }
+.profile {
+    width: 80%;
 }
 
-
-/* Desktop styles */
-
-@media only screen and (min-width: 769px) {
-    nav {
-        background-color: #4056a1;
-        font-size: 1.5em;
-    }
-}
-
-#toggle {
-    float: right;
-    color: blue;
-    margin-top: -50px;
-}
-
-.clear {
-    clear: both;
-}
-
-.bounce {
-    -moz-animation: bounce 1.5s infinite;
-    -webkit-animation: bounce 1.5s infinite;
-    animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-    from {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    to {
-        transform: translateY(0px);
-    }
-}
