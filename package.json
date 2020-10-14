@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "local": "nodemon --watch server -e js server/index.js",
-    "build": "webpack"
+    "local": "nodemon --watch server -e js server/index.js"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -15,18 +14,13 @@
     "body-parser": "^1.15.2",
     "chance": "^1.0.2",
     "express": "^4.17.1",
-    "flexboxgrid": "^6.3.1",
-    "fs": "0.0.1-security",
     "md5": "^2.1.0",
-    "moment": "^2.29.1",
-    "path": "^0.12.7"
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "nodemon": "^1.9.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "nodemon": "^1.9.2"
   },
   "repository": {
     "type": "git",
