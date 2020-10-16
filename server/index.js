@@ -56,7 +56,9 @@ const tweetsRoutes = require('./routes/tweets')(DataHelpers);
 
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use('/tweets', tweetsRoutes);
-
+app.get('/', (req, res) => {
+  res.json({response: 'it worked!!'});
+});
 
 app.listen(PORT, () => {
   console.log('Example app listening on port ' + PORT);
