@@ -1,5 +1,3 @@
-
-
 header {
     display: flex;
     align-items: center;
@@ -15,3 +13,23 @@ header {
     width: 80%;
 }
 
+.image {
+    width: 100%;
+    overflow: hidden;
+}
+
+.pop-out {
+    transition: transform .5s ease-in-out;
+}
+
+.pop-out:hover {
+    transform: scale(1.1);
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        border-radius: .25em;
+        border: 1px solid #ccc;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+    }
+}
