@@ -7,14 +7,40 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
+const morgan = require('morgan');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(express.json());
+app.use(morgan('dev'));
+
+// app.use(express.static('public'));
 
 // The in-memory database of tweets. It's a basic object with an array in it.
-const db = require('./lib/in-memory-db');
-
+// const db = require('./lib/in-memory-db');
+const db = [
+  {
+    'user': {
+      'name': 'Newton',
+      'avatars': 'https://i.imgur.com/73hZDYK.png',
+      'handle': '@SirIsaac',
+    },
+    'content': {
+      'text': 'If I have seen further it is by standing on the shoulders of giants',
+    },
+    'created_at': 1461116232227,
+  },
+  {
+    'user': {
+      'name': 'Descartes',
+      'avatars': 'https://i.imgur.com/nlhLi3I.png',
+      'handle': '@rd'},
+    'content': {
+      'text': 'Je pense , donc je suis',
+    },
+    'created_at': 1461113959088,
+  },
+];
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the
 // actual database it uses and see little to no changes elsewhere in the code
